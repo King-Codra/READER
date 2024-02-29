@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Book Library</title>
+    <link rel="icon" type="image" href="open-book.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="book-card">
+      <img src="book-cover.jpg" alt="Book Cover" class="book-cover" />
+      <div class="book-details">
+        <h2 class="book-title">Book Title</h2>
+        <p class="book-author">Author Name</p>
+        <p class="book-status">Status: Read</p>
+        <p class="book-pages">Pages: 300</p>
+      </div>
+      <div class="isbn-entry">
+        <label for="isbnInput">Enter ISBN:</label>
+        <input type="text" id="isbnInput" placeholder="e.g., 9780140328721" />
+        <button id="submitBtn">Submit</button>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
