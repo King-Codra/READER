@@ -1,35 +1,43 @@
 export let currentBook = null;
 
-const monaLisaOverdrive = new Object();
-const androids = new Object();
-monaLisaOverdrive.authors = `William Gibson`;
-monaLisaOverdrive.pages = 350;
-monaLisaOverdrive.releaseDate = 1997;
-monaLisaOverdrive.language = 'en';
-monaLisaOverdrive.title = 'Mona Lisa Overdrive';
-monaLisaOverdrive.cover = new URL(
-  '../mona-lisa-overdrive.jpg',
-  import.meta.url
-).toString();
-monaLisaOverdrive.isbn = 9780553281743;
-monaLisaOverdrive.description =
-  'The third book in the Sprawl series, by William Gibson';
+const testBooks = {
+  monaLisaOverdrive: {
+    authors: 'William Gibson',
+    pages: 350,
+    releaseDate: 1997,
+    language: 'en',
+    title: 'Mona Lisa Overdrive',
+    cover: new URL('../mona-lisa-overdrive.jpg', import.meta.url).toString(),
+    isbn: 9780553281743,
+    description: 'The third book in the Sprawl series, by William Gibson',
+  },
+  androids: {
+    authors: 'Philip K. Dick',
+    pages: 210,
+    releaseDate: 1969,
+    language: 'en',
+    title: 'Do Androids Dream of Electric Sheep',
+    cover: new URL('../androids.jpg', import.meta.url).toString(),
+    isbn: 9780451038005,
+    description:
+      'A blade runner is an agent tasked with finding and retiring replicants',
+  },
+};
 
-androids.authors = `Philip K. Dick`;
-androids.pages = 210;
-androids.releaseDate = 1969;
-androids.language = 'en';
-androids.title = 'Do Androids Dream of Electric Sheep';
-androids.cover = new URL('../androids.jpg', import.meta.url).toString();
-androids.isbn = 9780451038005;
-androids.description =
-  'A blade runner is an agent tasked with finding and retiring replicants';
+export async function testFetch(isbn) {
+  Object.values(testBooks).forEach((book) => {
+    if (book.isbn == isbn) {
+      neededBook = book;
+    }
+  });
 
-export const testBook = androids; // Change according to which book we would like to test
+  if (!neededBook) {
+    console.log('No test book found for this ISBN:', isbn);
+    return null;
+  }
+  const volumeInfo = neededBook;
+  console.log('testBook (param):', testBooks);
 
-export async function testFetch(testBook) {
-  const volumeInfo = testBook;
-  console.log('testBook (param):', testBook);
   const book = {
     authors: volumeInfo.authors ? volumeInfo.authors : 'Unknown',
     pages: volumeInfo.pages > 0 ? volumeInfo.pages : 'Unknown',

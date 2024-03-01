@@ -3,7 +3,7 @@ import { addBooksToLS } from './model.js';
 // import { currentBook } from './model.js'; // When using Google API
 import { bookView } from './views/standardView.js';
 import { testFetch } from './testingAPI.js';
-import { testBook } from './testingAPI.js';
+import { testBooks } from './testingAPI.js';
 import { currentBook } from './testingAPI.js'; // When using testingAPI.js (for tests without API)
 
 // Selecting elements from HTML
@@ -14,10 +14,13 @@ const addBookBtn = document.getElementById('addBookBtn');
 // Button click starts grabbing data from API and renders the book view accordingly
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
-  console.log('Button is now hidden');
   const isbn = ISBNInputField.value.replace(/ /g, '');
+  if (!isbn) {
+    console.log('No ISBN entered');
+    return;
+  }
   // fetchBookInfo(isbn) // Runs API call. Only when testing full code! Will exhaust API calls
-  testFetch(testBook) // TEST fetch function (doesn't use API)
+  testFetch(isbn) // TEST fetch function (doesn't use API)
     .then((bookInfo) => {
       console.log('bookInfo:', bookInfo);
       bookView.render(bookInfo);
