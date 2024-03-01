@@ -1,4 +1,8 @@
 import { rewriteLanguage } from '../helpers';
+import { displayStoredBooks } from '../model';
+
+// Making sure all User's books are ready at load page
+document.addEventListener('DOMContentLoaded', displayStoredBooks);
 
 // Class of the Main book view on page load. Includes functionality to inject HTML with necessary info
 class BookView {
@@ -18,7 +22,6 @@ class BookView {
 
   #generateMarkup() {
     return `
-    
       <img src="${this.#data.cover}" alt="Book Cover" class="book-cover" />
       <div class="book-details">
         <h2 class="book-title">${this.#data.title}</h2>
@@ -28,8 +31,9 @@ class BookView {
         <p class="book-language">${rewriteLanguage(
           `${this.#data.language}`
         )}</p>
-    <button id="addBookBtn" type="button">Add Book</button>
-  `;
+        <button id="addBookBtn">Add Book</button>
+      </div>
+    `;
   }
 }
 

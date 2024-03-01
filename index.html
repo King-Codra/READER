@@ -10,13 +10,13 @@
   <body>
     <div class="book-card">
       <div class="book-details">
-        <img src="no-cover.png" alt="Book Cover" class="book-cover" />
+        <img src="search-book.png" alt="Book Cover" class="book-cover" />
         <h2 class="book-title">Book Title</h2>
         <p class="book-author">Author Name</p>
         <p class="book-pages">Pages:</p>
         <p class="book-release-date">Release Date:</p>
         <p class="book-language">Language</p>
-        <button id="addBookBtn" type="button" class="hidden">Add Book</button>
+        <button id="addBookBtn" class="hidden">Add Book</button>
       </div>
       <div class="isbn-entry">
         <label for="isbnInput">Enter ISBN:</label>
@@ -25,9 +25,9 @@
       </div>
     </div>
     <h3 class="my-books-header">My Books:</h3>
-    <div class="my-books-container" class="books-row">
-      <div class="my-book-item">
-        <img src="androids.jpg" alt="Book Cover" class="my-book-cover" />
+    <div id="my-books-container" class="my-books-container" class="books-row">
+      <div id="my-books-placeholder" class="my-book-item placeholder">
+        <img src="add-book.png" alt="Book Cover" class="my-book-cover" />
         <div class="my-book-info">
           <h3 class="my-book-title">Book Title</h3>
           <p class="my-book-author">author</p>
@@ -35,6 +35,6 @@
         </div>
       </div>
     </div>
-    <script type="module" src="./js/controller.js"></script>
   </body>
+  <script type="module" src="./js/controller.js"></script>
 </html>
