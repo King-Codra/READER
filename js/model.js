@@ -100,7 +100,7 @@ export function displayStoredBooks() {
         }</p>
       </div>
     `;
-      myBooks.appendChild(bookElement);
+      myBooks.insertBefore(bookElement, myBooks.firstChild);
     });
   }
 }

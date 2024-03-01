@@ -175,3 +175,15 @@ label {
 #addBookBtn:hover {
   background-color: #45a049;
 }
+
+#clearLocalStorageBtn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  padding: 5px 10px;
+  background-color: #07070700;
+  cursor: pointer;
+}
+#clearLocalStorageBtn:hover {
+  background-color: #00000070;
+}

@@ -21,3 +21,12 @@ export const rewriteLanguage = function getFullLanguageName(languageCode) {
   const languageDisplay = new Intl.DisplayNames(['en'], { type: 'language' });
   return languageDisplay.of(languageCode);
 };
+
+// Clear Local storage
+document
+  .getElementById('clearLocalStorageBtn')
+  .addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+    console.log('Local storage cleared!');
+  });
