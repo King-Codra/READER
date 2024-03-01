@@ -54,6 +54,83 @@ body {
   margin-top: 50px;
 }
 
+/* MY BOOKS container */
+.my-books-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.my-books-header {
+  display: flex;
+  padding-left: 20px;
+}
+
+.my-books-row {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling if there are many books */
+  padding: 10px;
+  gap: 20px; /* Spacing between book items */
+}
+
+.my-book-item {
+  position: relative;
+  max-width: 150px;
+  max-height: 250px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.my-book-cover {
+  width: 150px;
+  height: auto;
+  transition: opacity 0.5s, filter 0, 5s;
+  will-change: opacity, filter;
+}
+
+.my-book-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(95, 95, 95, 0.027);
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+  will-change: opacity;
+}
+.my-book-info > * {
+  margin: 10px 20px;
+}
+
+.my-book-title,
+.my-book-author {
+  margin: 10px 0; /* Adds some space above and below each piece of text */
+}
+
+.my-book-description {
+  font-style: italic;
+}
+
+.my-book-item:hover .my-book-cover {
+  opacity: 0.3;
+  filter: blur(5px);
+}
+.my-book-item:hover .my-book-info {
+  opacity: 1;
+}
+
 label {
   font-size: 18px;
   margin-bottom: 10px;
@@ -73,7 +150,7 @@ label {
   padding: 10px 20px;
   margin-top: 10px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -82,7 +159,7 @@ label {
 }
 
 #submitBtn:hover {
-  background-color: #0056b3;
+  background-color: #4caf50;
 }
 
 #addBookBtn {
