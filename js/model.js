@@ -88,6 +88,7 @@ export function displayStoredBooks() {
     books.forEach((book) => {
       const bookElement = document.createElement('div');
       bookElement.classList.add('my-book-item');
+      bookElement.setAttribute('data-isbn', book.isbn ? book.isbn : 'Unknown');
       bookElement.innerHTML = `
       <img src="${
         book.cover ? book.cover : './imgs/add-book.png'

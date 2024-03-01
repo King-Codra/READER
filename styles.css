@@ -144,6 +144,54 @@ body {
   opacity: 1;
 }
 
+.modal {
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 60%;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+
+  margin: 5% auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-book-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 70%;
+  text-align: left;
+}
+
+.close-button {
+  position: absolute;
+  color: #aaa;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 label {
   font-size: 18px;
   margin-bottom: 10px;
@@ -199,4 +247,27 @@ label {
 }
 #clearLocalStorageBtn:hover {
   background-color: #00000070;
+}
+
+#modalBookCover {
+  max-width: 30%; /* Adjust to control the size of the cover */
+  max-height: 100%; /* Ensures the cover doesn't exceed the modal's height */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px;
+  margin-right: 20px; /* Space between the cover and the details */
+}
+
+#modalBookTitle,
+#modalBookAuthor,
+#modalBookDescription,
+#modalBookISBN {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  text-align: left;
+}
+
+#modalBookTitle {
+  margin-top: 0; /* Adjust if you need a little space from the top */
+  margin-bottom: 1px; /* Space between title and author */
 }

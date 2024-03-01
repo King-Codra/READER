@@ -2,6 +2,9 @@ import { fetchBookInfo } from './model.js';
 import { addBooksToLS } from './model.js';
 // import { currentBook } from './model.js'; // When using Google API
 import { bookView } from './views/standardView.js';
+import { closeModalBtn } from './views/standardView.js';
+import { modal } from './views/standardView.js';
+import { openModal } from './views/standardView.js';
 import { testFetch } from './testingAPI.js';
 import { testBooks } from './testingAPI.js';
 import { currentBook } from './testingAPI.js'; // When using testingAPI.js (for tests without API)
@@ -10,6 +13,7 @@ import { currentBook } from './testingAPI.js'; // When using testingAPI.js (for 
 const submitBtn = document.getElementById('submitBtn');
 const ISBNInputField = document.getElementById('isbnInput');
 const addBookBtn = document.getElementById('addBookBtn');
+const myBooksView = document.getElementById('my-books-container');
 
 // Button click starts grabbing data from API and renders the book view accordingly
 submitBtn.addEventListener('click', function (e) {
@@ -47,3 +51,30 @@ ISBNInputField.addEventListener('keypress', (e) => {
     submitBtn.click();
   }
 });
+
+myBooksView.addEventListener('click', function (e) {
+  e.preventDefault();
+  let clickedBook = e.target.closest('.my-book-item');
+  console.log('book was clicked');
+  if (clickedBook) {
+    console.log(clickedBook.dataset.isbn);
+    const isbn = clickedBook.dataset.isbn;
+
+    console.log(clickedBook);
+    let bookForModal = testFetch(isbn);
+    console.log(currentBook);
+    openModal(currentBook);
+  }
+});
+
+closeModalBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  modal.style.display = 'none';
+});
+
+window.onclick = function (e) {
+  e.preventDefault();
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+};

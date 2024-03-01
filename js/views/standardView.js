@@ -1,5 +1,7 @@
 import { rewriteLanguage } from '../helpers';
 import { displayStoredBooks } from '../model';
+export const modal = document.getElementById('bookModal');
+export const closeModalBtn = document.getElementsByClassName('close-button')[0];
 
 // Making sure all User's books are ready at load page
 document.addEventListener('DOMContentLoaded', displayStoredBooks);
@@ -38,3 +40,13 @@ class BookView {
 }
 
 export const bookView = new BookView();
+
+export function openModal(book) {
+  modal.style.display = 'block';
+  document.getElementById('modalBookTitle').textContent = book.title;
+  document.getElementById('modalBookAuthor').textContent = book.authors;
+  document.getElementById('modalBookDescription').textContent =
+    book.description;
+  document.getElementById('modalBookCover').src = book.cover;
+  document.getElementById('modalBookISBN').textContent = `ISBN: ${book.isbn}`;
+}
