@@ -1,39 +1,5 @@
 import { getData } from './helpers.js';
-
-// Necessary empty let variable to write the currently dislayed book's data into to store into local storage
 export let currentBook = null;
-
-// TESTING OBJECTS
-// TESTING OBJECTS
-// TESTING OBJECTS
-export const monaLisaOverdrive = new Object();
-export const androids = new Object();
-monaLisaOverdrive.authors = `William Gibson`;
-monaLisaOverdrive.pages = 350;
-monaLisaOverdrive.releaseDate = 1997;
-monaLisaOverdrive.language = 'en';
-monaLisaOverdrive.title = 'Mona Lisa Overdrive';
-monaLisaOverdrive.cover = new URL(
-  '../mona-lisa-overdrive.jpg',
-  import.meta.url
-).toString();
-monaLisaOverdrive.isbn = 9780553281743;
-monaLisaOverdrive.description =
-  'The third book in the Sprawl series, by William Gibson';
-
-androids.authors = `Philip K. Dick`;
-androids.pages = 210;
-androids.releaseDate = 1969;
-androids.language = 'en';
-androids.title = 'Do Androids Dream of Electric Sheep';
-androids.cover = new URL('../androids.jpg', import.meta.url).toString();
-androids.isbn = 9780451038005;
-androids.description =
-  'A blade runner is an agent tasked with finding and retiring replicants';
-// TESTING OBJECTS
-// TESTING OBJECTS
-// TESTING OBJECTS
-
 // Function to fetch book information using ISBN WITH API
 export async function fetchBookInfo(isbn) {
   try {
@@ -68,29 +34,6 @@ export async function fetchBookInfo(isbn) {
     throw error;
   }
 }
-
-// Testing FETCH function (doesn't use API)
-// TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING
-export async function testFetch(testBook) {
-  const volumeInfo = testBook;
-  console.log(testBook);
-  const book = {
-    authors: volumeInfo.authors ? volumeInfo.authors : 'Unknown',
-    pages: volumeInfo.pages > 0 ? volumeInfo.pages : 'Unknown',
-    releaseDate: volumeInfo.releaseDate ? volumeInfo.releaseDate : 'Unknown',
-    language: volumeInfo.language ? volumeInfo.language : 'Unknown',
-    title: volumeInfo.title ? volumeInfo.title : 'Unknown',
-    cover:
-      volumeInfo.cover ||
-      new URL('../no-cover.png', import.meta.url).toString(),
-    isbn: volumeInfo.isbn ? volumeInfo.isbn : 'Unknown',
-    description: volumeInfo.description ? volumeInfo.description : 'Unknown',
-  };
-  currentBook = book;
-  return book, currentBook;
-}
-// TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING
-// TESTING TESTING TESTING TESTING TESTING TESTING TESTING TESTING
 
 export const addBooksToLS = function (book) {
   let books = JSON.parse(localStorage.getItem('myBooks')) || [];
@@ -145,13 +88,15 @@ export function displayStoredBooks() {
       bookElement.classList.add('my-book-item');
       bookElement.innerHTML = `
       <img src="${
-        book.cover || 'add-book.png'
+        book.cover ? book.cover : 'add-book.png'
       }" alt="Book Cover" class="my-book-cover" />
       <div class="my-book-info">
-        <h3 class="my-book-title">${book.title || 'No Title'}</h3>
-        <p class="my-book-author">${book.authors || 'Unknown Author'}</p>
+        <h3 class="my-book-title">${book.title ? book.title : 'No Title'}</h3>
+        <p class="my-book-author">${
+          book.authors ? book.authors : 'Unknown Author'
+        }</p>
         <p class="my-book-description">${
-          book.description || 'No Description Available'
+          book.description ? book.description : 'No Description Available'
         }</p>
       </div>
     `;

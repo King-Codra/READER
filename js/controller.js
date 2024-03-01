@@ -1,12 +1,10 @@
 import { fetchBookInfo } from './model.js';
-import { testFetch } from './model.js';
-import { bookView } from './views/standardView.js';
 import { addBooksToLS } from './model.js';
-import { monaLisaOverdrive } from './model.js';
-import { androids } from './model.js';
-import { currentBook } from './model.js';
-
-const testBook = androids; // Change according to which book we would like to test
+// import { currentBook } from './model.js'; // When using Google API
+import { bookView } from './views/standardView.js';
+import { testFetch } from './testingAPI.js';
+import { testBook } from './testingAPI.js';
+import { currentBook } from './testingAPI.js'; // When using testingAPI.js (for tests without API)
 
 // Selecting elements from HTML
 const submitBtn = document.getElementById('submitBtn');
@@ -18,10 +16,10 @@ submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
   console.log('Button is now hidden');
   const isbn = ISBNInputField.value.replace(/ /g, '');
-  fetchBookInfo(isbn) // Runs API call. Only when testing full code! Will exhaust API calls
-    // testFetch(testBook) // TEST fetch function (doesn't use API)
+  // fetchBookInfo(isbn) // Runs API call. Only when testing full code! Will exhaust API calls
+  testFetch(testBook) // TEST fetch function (doesn't use API)
     .then((bookInfo) => {
-      // console.log(bookInfo);
+      console.log('bookInfo:', bookInfo);
       bookView.render(bookInfo);
     })
     .catch((error) => {
