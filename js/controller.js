@@ -30,18 +30,19 @@ submitBtn.addEventListener('click', function (e) {
     });
 });
 
-// Way too complicated logic to do a simple event listener for a button, but there you go Add Book button starts adding the Book found through search field to Local Storage which will in turn add it to the My Books view at the bottom of the page
-document.querySelector('.book-details').addEventListener('click', (event) => {
-  if (event.target.id === 'addBookBtn') {
+// Way too complicated logic to do a simple event listener for a button, but there you go               Add Book button starts adding the Book found through search field to Local Storage which will in turn add it to the My Books view at the bottom of the page
+document.querySelector('.book-details').addEventListener('click', (e) => {
+  if (e.target.id === 'addBookBtn') {
+    console.log(e.target.id);
+    console.log('current book is: ', currentBook);
+    currentBook
+      ? addBooksToLS(currentBook)
+      : console.log('There is no current book');
   }
-  console.log('current book is: ', currentBook);
-  currentBook
-    ? addBooksToLS(currentBook)
-    : console.log('There is no current book');
 });
 
 ISBNInputField.addEventListener('keypress', (e) => {
-  e.preventDefault;
+  e.preventDefault();
   if (e.key === 'Enter') {
     submitBtn.click();
   }

@@ -90,7 +90,7 @@ export function displayStoredBooks() {
       bookElement.classList.add('my-book-item');
       bookElement.innerHTML = `
       <img src="${
-        book.cover ? book.cover : 'add-book.png'
+        book.cover ? book.cover : './imgs/add-book.png'
       }" alt="Book Cover" class="my-book-cover" />
       <div class="my-book-info">
         <h3 class="my-book-title">${book.title ? book.title : 'No Title'}</h3>
@@ -99,7 +99,7 @@ export function displayStoredBooks() {
         }</p>
         <p class="my-book-description">${truncateText(
           book.description ? book.description : 'No Description Available',
-          20
+          10
         )}</p>
       </div>
     `;
