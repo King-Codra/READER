@@ -1,9 +1,22 @@
 import { getData } from './helpers.js';
 
+export const testBook = new Object();
+
+testBook.authors = `William Gibson`;
+testBook.pages = 350;
+testBook.releaseDate = 1997;
+testBook.language = 'en';
+testBook.title = 'Mona Lisa Overdrive';
+testBook.cover = './book-cover.jpg';
+testBook.isbn10 = 9780553281743;
+
 // Function to fetch book information using ISBN
-export async function fetchBookInfo(isbn) {
+
+export async function fetchBookInfo(testBook) {
+  // Param should be isbn at project launch or to test api
   try {
-    const data = await getData(isbn);
+    const data = await getData(testBook);
+    // Param should be isbn at project launch or to test api
     if (!data.items || data.items.length === 0) {
       console.log('No books found for this ISBN.');
       return;

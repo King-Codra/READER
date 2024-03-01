@@ -28,6 +28,7 @@ class BookView {
         <p class="book-language">${rewriteLanguage(
           `${this.#data.language}`
         )}</p>
+    <button id="addBookBtn" type="button">Add Book</button>
   `;
   }
 }

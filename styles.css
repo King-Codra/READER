@@ -4,6 +4,12 @@ body {
   padding: 0;
 }
 
+/* Hidden class to be used by anything that requires hiding */
+.hidden {
+  display: none;
+}
+
+/* Styling for the main book object before and during search */
 .book-card {
   display: flex;
   align-items: center;
@@ -53,6 +59,7 @@ label {
   margin-bottom: 10px;
 }
 
+/* Styling for input field */
 #isbnInput {
   width: 300px;
   padding: 10px;
@@ -61,6 +68,7 @@ label {
   border-radius: 5px;
 }
 
+/* Button stylings */
 #submitBtn {
   padding: 10px 20px;
   margin-top: 10px;
@@ -75,4 +83,18 @@ label {
 
 #submitBtn:hover {
   background-color: #0056b3;
+}
+
+#addBookBtn {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#addBookBtn:hover {
+  background-color: #45a049;
 }
