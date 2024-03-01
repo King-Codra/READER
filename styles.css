@@ -57,6 +57,9 @@ body {
 /* MY BOOKS container */
 .my-books-container {
   display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -77,9 +80,10 @@ body {
 }
 
 .my-book-item {
+  flex: 0 0 auto;
   position: relative;
-  max-width: 150px;
-  max-height: 250px;
+  width: 150px;
+  height: 250px;
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
@@ -116,7 +120,7 @@ body {
 
 .my-book-title,
 .my-book-author {
-  margin: 10px 0; /* Adds some space above and below each piece of text */
+  margin: 5px 0; /* Adds some space above and below each piece of text */
 }
 
 .my-book-description {

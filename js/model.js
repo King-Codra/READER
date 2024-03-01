@@ -1,4 +1,6 @@
 import { getData } from './helpers.js';
+import { truncateText } from './helpers.js';
+
 export let currentBook = null;
 // Function to fetch book information using ISBN WITH API
 export async function fetchBookInfo(isbn) {
@@ -24,7 +26,7 @@ export async function fetchBookInfo(isbn) {
       id: data.items[0].id ? data.items[0].id : 'Unknown',
       cover:
         volumeInfo.imageLinks?.thumbnail ||
-        new URL('../no-cover.png', import.meta.url).toString(),
+        new URL('../imgs/no-cover.png', import.meta.url).toString(),
     };
 
     currentBook = book;
@@ -40,10 +42,10 @@ export const addBooksToLS = function (book) {
 
   //   Check for duplicate (TESTING MODE)
   const bookAdded = books.some((storedBook) => storedBook.isbn === book.isbn);
-  if (bookAdded) {
-    console.log('Book is already in My Books');
-    return;
-  }
+  //   if (bookAdded) {
+  //     console.log('Book is already in My Books');
+  //     return;
+  //   }
 
   // Check for duplicate (API Mode)
   //   const bookAdded = books.some((storedBook) => storedBook.id === book.id);
@@ -82,7 +84,7 @@ export function displayStoredBooks() {
   } else {
     placeholder.style.display = 'none';
 
-    // Adds the necessary book specific data into the My Books HTML to show the bok in the container
+    // Adds the necessary book specific data into the My Books HTML to show the book in the container
     books.forEach((book) => {
       const bookElement = document.createElement('div');
       bookElement.classList.add('my-book-item');
@@ -95,9 +97,10 @@ export function displayStoredBooks() {
         <p class="my-book-author">${
           book.authors ? book.authors : 'Unknown Author'
         }</p>
-        <p class="my-book-description">${
-          book.description ? book.description : 'No Description Available'
-        }</p>
+        <p class="my-book-description">${truncateText(
+          book.description ? book.description : 'No Description Available',
+          20
+        )}</p>
       </div>
     `;
       myBooks.insertBefore(bookElement, myBooks.firstChild);

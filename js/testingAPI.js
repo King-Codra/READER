@@ -7,7 +7,10 @@ const testBooks = {
     releaseDate: 1997,
     language: 'en',
     title: 'Mona Lisa Overdrive',
-    cover: new URL('../mona-lisa-overdrive.jpg', import.meta.url).toString(),
+    cover: new URL(
+      '../imgs/mona-lisa-overdrive.jpg',
+      import.meta.url
+    ).toString(),
     isbn: 9780553281743,
     description: 'The third book in the Sprawl series, by William Gibson',
   },
@@ -17,10 +20,21 @@ const testBooks = {
     releaseDate: 1969,
     language: 'en',
     title: 'Do Androids Dream of Electric Sheep',
-    cover: new URL('../androids.jpg', import.meta.url).toString(),
+    cover: new URL('../imgs/androids.jpg', import.meta.url).toString(),
     isbn: 9780451038005,
     description:
       'A blade runner is an agent tasked with finding and retiring replicants',
+  },
+  fellowship: {
+    authors: 'J.R.R. Tolkien',
+    pages: 407,
+    releaseDate: 2022,
+    language: 'en',
+    title: 'The Fellowship of the Ring (Lord of the Rings Vol.1)',
+    cover: new URL('../imgs/fellowship.jpg', import.meta.url).toString(),
+    isbn: 9780008567125,
+    description:
+      'In a sleepy village in the Shire, a young hobbit is entrusted with an immense task. He must make a perilous journey across Middle-Earth to the Cracks of Doom, there to destroy the Ruling Ring of Power - the only thing that prevents the Dark Lords evil dominion',
   },
 };
 
@@ -46,7 +60,7 @@ export async function testFetch(isbn) {
     title: volumeInfo.title ? volumeInfo.title : 'Unknown',
     cover:
       volumeInfo.cover ||
-      new URL('../no-cover.png', import.meta.url).toString(),
+      new URL('../imgs/no-cover.png', import.meta.url).toString(),
     isbn: volumeInfo.isbn ? volumeInfo.isbn : 'Unknown',
     description: volumeInfo.description ? volumeInfo.description : 'Unknown',
   };

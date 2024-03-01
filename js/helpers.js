@@ -30,3 +30,41 @@ document
     location.reload();
     console.log('Local storage cleared!');
   });
+
+// Fix for way too long description texts
+export function truncateText(text, limit) {
+  const words = text.split(' ');
+
+  if (words.length > limit) {
+    return words.slice(0, limit).join(' ') + '...';
+  }
+
+  return text;
+}
+
+const slider = document.querySelector('.my-books-container');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 0.75; // The number 2 determines the scroll speed
+  slider.scrollLeft = scrollLeft - walk;
+});

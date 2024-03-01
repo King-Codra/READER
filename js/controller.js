@@ -39,3 +39,10 @@ document.querySelector('.book-details').addEventListener('click', (event) => {
     ? addBooksToLS(currentBook)
     : console.log('There is no current book');
 });
+
+ISBNInputField.addEventListener('keypress', (e) => {
+  e.preventDefault;
+  if (e.key === 'Enter') {
+    submitBtn.click();
+  }
+});
