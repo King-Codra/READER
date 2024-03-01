@@ -54,6 +54,8 @@ export async function fetchBookInfo(isbn) {
         : 'Unknown',
       language: volumeInfo.language ? volumeInfo.language : 'Unknown',
       title: volumeInfo.title ? volumeInfo.title : 'Unknown',
+      description: volumeInfo.description ? volumeInfo.description : 'Unknown',
+      id: data.items[0].id ? data.items[0].id : 'Unknown',
       cover:
         volumeInfo.imageLinks?.thumbnail ||
         new URL('../no-cover.png', import.meta.url).toString(),
@@ -74,14 +76,15 @@ export async function testFetch(testBook) {
   console.log(testBook);
   const book = {
     authors: volumeInfo.authors ? volumeInfo.authors : 'Unknown',
-    pages: volumeInfo.pages > 0 ? volumeInfo.pages : 'Unkown',
+    pages: volumeInfo.pages > 0 ? volumeInfo.pages : 'Unknown',
     releaseDate: volumeInfo.releaseDate ? volumeInfo.releaseDate : 'Unknown',
     language: volumeInfo.language ? volumeInfo.language : 'Unknown',
     title: volumeInfo.title ? volumeInfo.title : 'Unknown',
     cover:
       volumeInfo.cover ||
       new URL('../no-cover.png', import.meta.url).toString(),
-    isbn: volumeInfo.isbn ? volumeInfo : 'Unknown',
+    isbn: volumeInfo.isbn ? volumeInfo.isbn : 'Unknown',
+    description: volumeInfo.description ? volumeInfo.description : 'Unknown',
   };
   currentBook = book;
   return book, currentBook;
@@ -91,11 +94,20 @@ export async function testFetch(testBook) {
 
 export const addBooksToLS = function (book) {
   let books = JSON.parse(localStorage.getItem('myBooks')) || [];
+
+  //   Check for duplicate (TESTING MODE)
   const bookAdded = books.some((storedBook) => storedBook.isbn === book.isbn);
   if (bookAdded) {
     console.log('Book is already in My Books');
     return;
   }
+
+  // Check for duplicate (API Mode)
+  //   const bookAdded = books.some((storedBook) => storedBook.id === book.id);
+  //   if (bookAdded) {
+  //     console.log('Book is already in My Books');
+  //     return;
+  //   }
 
   books.push(book);
   localStorage.setItem('myBooks', JSON.stringify(books));
@@ -112,6 +124,7 @@ export function displayStoredBooks() {
   const books = getBooksFromLS();
   const myBooks = document.getElementById('my-books-container');
   const placeholder = document.getElementById('my-books-placeholder');
+  console.log(books);
 
   // Removes all child elements of my-books-container to make place for data specific to the book the user will add
   Array.from(myBooks.children).forEach((child) => {

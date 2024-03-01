@@ -18,8 +18,8 @@ submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
   console.log('Button is now hidden');
   const isbn = ISBNInputField.value.replace(/ /g, '');
-  // fetchBookInfo(isbn) // Runs API call. Only when testing full code! Will exhaust API calls
-  testFetch(testBook) // TEST fetch function (doesn't use API)
+  fetchBookInfo(isbn) // Runs API call. Only when testing full code! Will exhaust API calls
+    // testFetch(testBook) // TEST fetch function (doesn't use API)
     .then((bookInfo) => {
       // console.log(bookInfo);
       bookView.render(bookInfo);
