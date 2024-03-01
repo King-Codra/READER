@@ -74,9 +74,9 @@ body {
 
 .my-books-row {
   display: flex;
-  overflow-x: auto; /* Allows horizontal scrolling if there are many books */
+  overflow-x: auto;
   padding: 10px;
-  gap: 20px; /* Spacing between book items */
+  gap: 20px;
 }
 
 .my-book-item {
@@ -145,14 +145,14 @@ body {
 }
 
 .modal {
-  /* display: none; Hidden by default */
-  position: fixed; /* Stay in place */
+  display: none;
+  position: fixed;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -250,11 +250,11 @@ label {
 }
 
 #modalBookCover {
-  max-width: 30%; /* Adjust to control the size of the cover */
-  max-height: 100%; /* Ensures the cover doesn't exceed the modal's height */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 30%;
+  max-height: 100%;
+  height: auto;
   border-radius: 5px;
-  margin-right: 20px; /* Space between the cover and the details */
+  margin-right: 20px;
 }
 
 #modalBookTitle,
@@ -268,6 +268,6 @@ label {
 }
 
 #modalBookTitle {
-  margin-top: 0; /* Adjust if you need a little space from the top */
-  margin-bottom: 1px; /* Space between title and author */
+  margin-top: 0;
+  margin-bottom: 1px;
 }
