@@ -6,7 +6,6 @@
   "name": "reading-app",
   "version": "0.0.1",
   "description": "test. personal project.",
-  "main": "script.js",
   "devDependencies": {
     "buffer": "^6.0.3"
   },
