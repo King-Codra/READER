@@ -16,10 +16,15 @@ export const getData = async function (isbn) {
   }
 };
 
+// User Locale functions
 // Rewriting Language codes to full words
 export const rewriteLanguage = function getFullLanguageName(languageCode) {
   const languageDisplay = new Intl.DisplayNames(['en'], { type: 'language' });
   return languageDisplay.of(languageCode);
+};
+
+export const dateLocalizer = function (date, locale = 'default') {
+  return new Intl.DateTimeFormat(locale).format(date);
 };
 
 // Clear Local storage

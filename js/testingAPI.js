@@ -1,5 +1,6 @@
 export let currentBook = null;
 
+// IF YOU ADD NEW KEYS TO TEST BOOKS ALWAYS ALSO ADD THEM TO testFetch !!!!!
 const testBooks = {
   monaLisaOverdrive: {
     authors: 'William Gibson',
@@ -13,6 +14,7 @@ const testBooks = {
     ).toString(),
     isbn: 9780553281743,
     description: 'The third book in the Sprawl series, by William Gibson',
+    type: 'Paperback',
   },
   androids: {
     authors: 'Philip K. Dick',
@@ -24,6 +26,7 @@ const testBooks = {
     isbn: 9780451038005,
     description:
       'A blade runner is an agent tasked with finding and retiring replicants',
+    type: 'E-book',
   },
   fellowship: {
     authors: 'J.R.R. Tolkien',
@@ -35,6 +38,7 @@ const testBooks = {
     isbn: 9780008567125,
     description:
       'In a sleepy village in the Shire, a young hobbit is entrusted with an immense task. He must make a perilous journey across Middle-Earth to the Cracks of Doom, there to destroy the Ruling Ring of Power - the only thing that prevents the Dark Lords evil dominion',
+    type: 'Paperback',
   },
 };
 
@@ -42,6 +46,7 @@ export async function testFetch(isbn) {
   Object.values(testBooks).forEach((book) => {
     if (book.isbn == isbn) {
       neededBook = book;
+      console.log(book);
     }
   });
 
@@ -51,8 +56,10 @@ export async function testFetch(isbn) {
   }
   const volumeInfo = neededBook;
   console.log('testBook (param):', testBooks);
+  console.log('neededBook DEZEEEEE:', volumeInfo);
 
   const book = {
+    // WHENEVER YOU ADD NEW DATA TO TEST BOOKS ALWAYS TEST HERE
     authors: volumeInfo.authors ? volumeInfo.authors : 'Unknown',
     pages: volumeInfo.pages > 0 ? volumeInfo.pages : 'Unknown',
     releaseDate: volumeInfo.releaseDate ? volumeInfo.releaseDate : 'Unknown',
@@ -63,6 +70,7 @@ export async function testFetch(isbn) {
       new URL('../imgs/no-cover.png', import.meta.url).toString(),
     isbn: volumeInfo.isbn ? volumeInfo.isbn : 'Unknown',
     description: volumeInfo.description ? volumeInfo.description : 'Unknown',
+    type: volumeInfo.type ? volumeInfo.type : 'Unknown',
   };
   currentBook = book;
   console.log('book:', book);

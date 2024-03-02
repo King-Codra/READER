@@ -155,20 +155,31 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.modal-section {
+  background-color: #5f6c24;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
 .modal-content {
-  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 60%;
+  align-items: flex-start;
+  width: 800px;
+  height: 350px;
+  overflow: hidden;
   border-radius: 10px;
-  background-color: #fff;
-  padding: 10px;
-
+  background-color: #d8c5c583;
+  padding: 20px;
   margin: 5% auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .modal-book-info-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -176,12 +187,36 @@ body {
   text-align: left;
 }
 
+.title-author-box,
+.description-box,
+.extra-info-box {
+  max-width: calc(100% - 20px);
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+
+  background-color: #f4f4f4;
+}
+
+.description-box {
+  overflow-y: auto;
+  word-wrap: break-word;
+  overflow-x: hidden;
+}
+
+.extra-info-box {
+  margin-bottom: 1px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
 .close-button {
   position: absolute;
   color: #aaa;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
+  top: 1px;
+  right: 1px;
+  font-size: 2px; /* button basically not clickable anymore. Bad practice I think, but I want it gone, and can't figure it out rn */
   font-weight: bold;
 }
 
@@ -253,21 +288,34 @@ label {
   max-width: 30%;
   max-height: 100%;
   height: auto;
+  object-fit: contain;
   border-radius: 5px;
   margin-right: 20px;
 }
 
 #modalBookTitle,
 #modalBookAuthor,
-#modalBookDescription,
-#modalBookISBN {
+#modalBookDescription {
   display: flex;
   flex-direction: column;
-  max-width: 70%;
+  width: 100%;
   text-align: left;
+  padding: 0 10px;
 }
 
 #modalBookTitle {
   margin-top: 0;
   margin-bottom: 1px;
+}
+
+#modalBookAuthor {
+  font-style: italic;
+}
+
+#modalBookDescription {
+  white-space: normal;
+}
+
+#modalBookISBN {
+  font-style: italic;
 }
