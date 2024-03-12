@@ -38,7 +38,7 @@ const testBooks = {
     isbn: 9780008567125,
     description:
       'In a sleepy village in the Shire, a young hobbit is entrusted with an immense task. He must make a perilous journey across Middle-Earth to the Cracks of Doom, there to destroy the Ruling Ring of Power - the only thing that prevents the Dark Lords evil dominion',
-    type: 'Paperback',
+    type: 'Hardcover',
   },
 };
 

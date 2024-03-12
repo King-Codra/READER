@@ -166,8 +166,7 @@ body {
 .modal-content {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
   width: 800px;
   height: 350px;
   overflow: hidden;
@@ -183,7 +182,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 70%;
+  max-width: 100%;
   text-align: left;
 }
 
@@ -198,17 +197,30 @@ body {
   background-color: #f4f4f4;
 }
 
+.title-author-box {
+  height: 30%;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
 .description-box {
+  flex-grow: 1;
   overflow-y: auto;
   word-wrap: break-word;
   overflow-x: hidden;
+  background-color: #f4f4f4;
 }
 
 .extra-info-box {
-  margin-bottom: 1px;
+  height: 15%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f4f4f4;
 }
 
 .close-button {
@@ -295,7 +307,9 @@ label {
 
 #modalBookTitle,
 #modalBookAuthor,
-#modalBookDescription {
+#modalBookDescription,
+#modalBookPageCount,
+#modalBookReleaseDate {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -304,10 +318,15 @@ label {
 }
 
 #modalBookTitle {
-  margin-top: 0;
-  margin-bottom: 1px;
+  margin: 0;
+  margin-bottom: 0px;
 }
 
+#modalBookAuthor,
+#modalBookPageCount,
+#modalBookReleaseDate {
+  margin: 0;
+}
 #modalBookAuthor {
   font-style: italic;
 }

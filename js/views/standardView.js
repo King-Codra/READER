@@ -58,7 +58,7 @@ export function openModal(book) {
 
   document.getElementById(
     'modalBookReleaseDate'
-  ).textContent = `Released: ${book.releaseDate}`;
+  ).textContent = `${book.releaseDate}`;
   document.getElementById('modalBookType').textContent = `Type: ${book.type}`;
 
   document.getElementById('modalBookISBN').textContent = `isbn: ${book.isbn}`;
